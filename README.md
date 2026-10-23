@@ -24,6 +24,7 @@ The project combines biomedical literature retrieval, relevance ranking, evidenc
 - [Understanding the Results](#understanding-the-results)
 - [Limitations and Responsible Use](#limitations-and-responsible-use)
 - [Future Improvements](#future-improvements)
+- [Author](#author)
 - [Contributing](#contributing)
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
@@ -112,10 +113,10 @@ Google Gemma 4 is used through an API to help analyze the relationship between t
 
 The application maps its internal assessment to one of four user-facing verdicts:
 
-- Supported
-- Partially Supported
-- Unsupported
-- Inconclusive
+- **Supported**
+- **Partially Supported**
+- **Unsupported**
+- **Inconclusive**
 
 ### 7. Evidence-Oriented Reporting
 
@@ -141,7 +142,7 @@ The user enters a public claim about antibiotics into the Streamlit interface.
 
 Example:
 
-`Antibiotics are effective against viral infections.`
+> Antibiotics are effective against viral infections.
 
 This example illustrates the input format; it is not a predefined test result.
 
@@ -181,7 +182,34 @@ Users can inspect the evidence passages and scientific publications rather than 
 
 ### Workflow Summary
 
-**User Claim → Biomedical Literature Retrieval → BM25 Relevance Ranking → Evidence Passage Extraction → LLM-Assisted Analysis → Preliminary Assessment → Evidence-Oriented Report**
+```text
+User Claim
+    |
+    v
+Biomedical Literature Retrieval
+        (Europe PMC)
+    |
+    v
+Retrieved Research Material
+    |
+    v
+BM25 Relevance Ranking
+    |
+    v
+Evidence Passage Extraction
+    |
+    v
+Google Gemma 4 API Analysis
+    |
+    v
+Evidence-Based Synthesis
+    |
+    v
+Preliminary Assessment
+    |
+    v
+Report and Evidence Display
+```
 
 ---
 
@@ -213,44 +241,7 @@ Google Gemma 4 receives the relevant analysis context through an API and helps i
 
 The assessment components organize the findings into a preliminary result and provide the information needed by the interface to display the report.
 
-### Architecture Diagram
-
-```text
-                  USER
-                   |
-                   v
-          Streamlit Web Interface
-                   |
-                   v
-           Claim Processing
-                   |
-                   v
-       Biomedical Literature Search
-             (Europe PMC)
-                   |
-                   v
-        Retrieved Research Material
-                   |
-                   v
-        BM25 Relevance Ranking
-                   |
-                   v
-        Evidence Passage Extraction
-                   |
-                   v
-      Google Gemma 4 API Analysis
-                   |
-                   v
-        Evidence-Based Synthesis
-                   |
-                   v
-        Preliminary Assessment
-                   |
-                   v
-       Report and Evidence Display
-```
-
-This diagram illustrates the conceptual workflow. Individual stages and their exact implementation details are defined by the project's source code.
+The diagram illustrates the conceptual workflow. Individual stages and their exact implementation details are defined by the project's source code.
 
 ---
 
@@ -296,7 +287,7 @@ This verdict does not automatically establish that the opposite statement is tru
 
 The available retrieved evidence is insufficient, ambiguous, mixed, conflicting, or otherwise inadequate for a reliable preliminary assessment.
 
-**Important distinction:** These verdicts describe the system's preliminary interpretation of the retrieved material. They are not formal clinical conclusions, and the completeness of the literature search is not guaranteed.
+**Important:** These verdicts describe the system's preliminary interpretation of the retrieved material. They are not formal clinical conclusions, and the completeness of the literature search is not guaranteed.
 
 ---
 
@@ -321,11 +312,9 @@ git clone https://github.com/mohammedwetwet/AntibioticCheck.git
 cd AntibioticCheck
 ```
 
-If your local project folder has a different name, use that folder name instead.
-
 ### 2. Create a Virtual Environment
 
-On Windows:
+**Windows:**
 
 ```powershell
 python -m venv .venv
@@ -337,9 +326,7 @@ Activate it:
 .venv\Scripts\Activate.ps1
 ```
 
-If PowerShell blocks activation, you can use another terminal or configure your local PowerShell execution policy appropriately.
-
-On macOS or Linux:
+**macOS or Linux:**
 
 ```bash
 python3 -m venv .venv
@@ -468,6 +455,17 @@ These are potential improvements, not claims about functionality already impleme
 
 ---
 
+## Author
+
+**Mohamed Adel Yousef Wetwet**
+
+STEM GH S'28
+
+- **GitHub:** [@mohammedwetwet](https://github.com/mohammedwetwet)
+- **LinkedIn:** [Mohamed Adel Yousef Wetwet](https://www.linkedin.com/in/mohammed-adel-ai-ml-dl/)
+
+---
+
 ## Contributing
 
 Contributions that improve retrieval quality, evidence traceability, evaluation, documentation, testing, and responsible AI use are welcome.
@@ -496,6 +494,8 @@ Please consult the relevant providers' documentation and terms when using their 
 
 ## License
 
-No license has been specified in this README.
+This project is licensed under the **MIT License**.
 
-Before distributing or reusing the project, choose and add an appropriate license file to the repository. Until a license is added, do not assume that the project is available for unrestricted reuse.
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the software, subject to the conditions of the license.
+
+See the [LICENSE](LICENSE) file for the complete license text.
